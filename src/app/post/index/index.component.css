@@ -1,0 +1,11 @@
+.custom-table tbody tr {
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.custom-table tbody tr:hover {
+  background-color: #f1f3f4;   /* Gmail la light gray */
+}
+.custom-table tbody tr:hover td {
+  font-weight: 500;
+}

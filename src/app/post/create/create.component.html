@@ -13,7 +13,7 @@
                 type="text" 
                 class="form-control">
             <div *ngIf="f['title'].touched && f['title'].invalid" class="alert alert-danger">
-                <div *ngIf="f['title'].errors && f['title'].errors['require']">Title is mandatory.</div>
+                <div *ngIf="f['title'].errors && f['title'].errors['required']">Title is mandatory.</div>
             </div>
         </div>
   
@@ -26,10 +26,13 @@
                 class="form-control">
             </textarea>
             <div *ngIf="f['body'].touched && f['body'].invalid" class="alert alert-danger">
-                <div *ngIf="f['body'].errors && f['body'].errors['require']">Body is mandatory.</div>
+                <div *ngIf="f['body'].errors && f['body'].errors['required']">Body is mandatory.</div>
             </div>
         </div>
   
-        <button class="btn btn-primary" type="submit">Submit</button>
+        <!-- <button class="btn btn-primary" type="submit" [disabled]="form.invalid"></button>>Submit</button> 
+         -->
+        <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Submit</button>
+
     </form>
 </div>

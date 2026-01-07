@@ -1,21 +1,22 @@
 <div class="container">
     <h1>View Post</h1>
   
-    <a class="btn btn-primary">Back</a>
+    <a class="btn btn-primary" (click)="back()">Back</a>
+
    
-    <div>
+    <div *ngIf="post">
         <strong>ID:</strong>
-        <p></p>
+        <p>{{'ID'+post.id}}</p>
     </div>
    
     <div>
         <strong>Title:</strong>
-        <p></p>
+        <p>{{post.title}}</p>
     </div>
    
     <div>
         <strong>Body:</strong>
-        <p></p>
+        <p>{{post.body}}</p>
     </div>
    
 </div>

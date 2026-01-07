@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { CanComponentDeactivate } from 'src/app/unsaved-changes.guard';
      
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent implements OnInit , CanComponentDeactivate {
     
   form!: FormGroup;
     
@@ -49,11 +50,21 @@ export class CreateComponent implements OnInit {
    * @return response()
    */
   submit(){
+    if (this.form.invalid) {
+    this.form.markAllAsTouched();
+    return;}
     console.log(this.form.value);
     this.postService.create(this.form.value).subscribe((res:any) => {
          console.log('Post created successfully!');
          this.router.navigateByUrl('post/index');
+          this.form.markAsPristine();
     })
   }
+  canDeactivate(): boolean {
+    if (this.form.dirty && !this.form.pristine) {
+      return confirm('You have unsaved changes! Do you really want to leave?');
+    }
+    return true;
+  }
   
-}
+  }

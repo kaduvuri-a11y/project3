@@ -36,10 +36,24 @@ export class IndexComponent implements OnInit {
    * @return response()
    */
   deletePost(id:number){
+     const confirmDelete = confirm(' you want to delete this id?');
+  if (confirmDelete) {
+    this.postService.delete(id).subscribe(() => {
+      alert('Post deleted successfully!');
+      // Reload the posts list
+      this.loadPosts();
+    });
+  } else {
+    // User cancelled
+    console.log('Delete cancelled');
+  }
     this.postService.delete(id).subscribe(res => {
          this.posts = this.posts.filter(item => item.id !== id);
          console.log('Post deleted successfully!');
     })
+  }
+  loadPosts() {
+    throw new Error('Method not implemented.');
   }
     
 }

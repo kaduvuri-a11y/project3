@@ -1,0 +1,25 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 10px 20px;
+  background-color: #4CAF50; /* Green background */
+  color: white; /* Text color white */
+}
+
+.navbar a {
+  color: white; /* Brand link color */
+  text-decoration: none;
+}
+
+.mx-auto {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+.ml-auto {
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+}
